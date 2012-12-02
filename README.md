@@ -9,7 +9,7 @@ Pandocket is basically a python wrapper for pandoc mashed together with Beautifu
 
 The trigger lines should look like this:
 
-http://www.example.com | div > class=content
+	http://www.example.com | div > class=content
 
 Pandocket knows that everything to the left of this bar is the URL. Everything to the right of the bar will be information about the tag that wraps the specific content from the page that you want. The name on the left of `>` is the tag name, and the text on the right is one of that tag's attributes.
 
