@@ -22,6 +22,7 @@ An example input file called `sources.txt` is included in this repository, toget
 # Known Issues
 
 - If the HTML content grabbed from the web uses "span" tags to provide formatting like italics, pandoc will lose the formatting. Basically, if the HTML is not well-formed, you're on your own.
+- PDF and EPUB output will fail if there are images in the HTML content, because it won't have local copies of the images. Best solution would probably be to delete images using BeautifulSoup.
 
 # Dependencies
 
