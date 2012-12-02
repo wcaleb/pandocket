@@ -1,0 +1,18 @@
+% Testing Pandocket
+% W. Caleb McDaniel 
+% November 23, 2012
+
+# Preface
+
+I'm using this file to test out my new Python script. Since this is just a regular markdown file, I can include any markdown content just as I normally would.
+
+# Lincoln Overturns Hunter's Proclamation
+
+The below text is taken from <http://www.history.umd.edu/Freedmen/hunter.htm>.
+
+http://www.history.umd.edu/Freedmen/hunter.htm | div > id=doctext
+
+# Lincoln's Preliminary Emancipation Proclamation
+
+http://www.history.umd.edu/Freedmen/prelep.htm | div > id=doctext
+
