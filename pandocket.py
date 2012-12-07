@@ -5,13 +5,20 @@
 # TODO: Remove img tags with BeautifulSoup
 # TODO: Make error handling easier to understand
 
+import argparse
 import urllib2
 import pandoc
 from bs4 import BeautifulSoup
 
+parser = argparse.ArgumentParser()
+parser.add_argument('filename', action='store', help='Name of input file to process')
+parser.add_argument('outname', action='store', help='Basename for output files')
+
+sysargs = parser.parse_args()
+
 # Open the input file and empty the output file
-input = open("sources.txt", "r").read().splitlines()
-open("pandocket-output.md","w").close()
+input = open(sysargs.filename, "r").read().splitlines()
+open(sysargs.outname + ".md","w").close()
 
 for line in input:
  
@@ -34,17 +41,17 @@ for line in input:
 		html_md = doc.markdown
 
  		# Write to output file, getting rid of any literal linebreaks
- 		f = open('pandocket-output.md','a').write(html_md.replace("\\\n","\n"))
+ 		f = open(sysargs.outname + ".md","a").write(html_md.replace("\\\n","\n"))
 
 	elif len(line) == 0:
 
 		# Convert blank lines in input file to newlines in output file
-		f = open('pandocket-output.md','a').write("\n")
+		f = open(sysargs.outname + ".md","a").write("\n")
 
 	else:
 
 		# Pass regular lines from input file to output file
-		f = open('pandocket-output.md','a').write(line + "\n")	
+		f = open(sysargs.outname + ".md","a").write(line + "\n")
 
 # Call on pandoc to convert fulltext to markdown and write to file
 # Using yoavram fork of pyandoc
@@ -52,6 +59,6 @@ for line in input:
 fulldoc = pandoc.Document()
 fulldoc.add_argument("standalone")
 fulldoc.add_argument("toc")
-fulldoc.markdown = open('pandocket-output.md','r').read()
+fulldoc.markdown = open(sysargs.outname + ".md","r").read()
 fulldoc.to_file('pandocket-output.pdf')
 fulldoc.to_file('pandocket-output.epub')
