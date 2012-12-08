@@ -1,8 +1,8 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
-# pandoc-webpage.py
+# by Caleb McDaniel, http://wcm1.web.rice.edu / BB-CY
+# External Dependencies: pandoc, pyandoc, bs4
 # TODO: Preserve span formatting from original webpage
-# TODO: Remove img tags with BeautifulSoup
 # TODO: Make error handling easier to understand
 
 import argparse
@@ -10,6 +10,7 @@ import urllib2
 import pandoc
 from bs4 import BeautifulSoup
 
+# Define and parse command-line arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('filename', action='store', help='Name of input file to process')
 parser.add_argument('outname', action='store', help='Basename for output files')
@@ -17,9 +18,9 @@ parser.add_argument('--mdonly', action='store_true', help='Output markdown only,
 parser.add_argument('--noimages', action='store_true', help='Remove image tags from webpage (recommended for PDF and EPUB output)')
 sysargs, panargs = parser.parse_known_args()
 
-# Open the input file and empty the output file
-input = open(sysargs.filename, "r").read().splitlines()
+# Open the input file and empty the output file if it exists
 open(sysargs.outname + ".md","w").close()
+input = open(sysargs.filename, "r").read().splitlines()
 
 for line in input:
  
@@ -27,7 +28,6 @@ for line in input:
 
 		# Get information from line about website to be parsed
 		# Help provided by http://stackoverflow.com/questions/13537829/
-		# vars = line.split(' | ')
 		if line.count('|') == 1:
 			url, args = line.split (' | ', 1)
 			user = None
@@ -42,14 +42,15 @@ for line in input:
 	 	soup = BeautifulSoup(html)
  		html_section = soup.find(tag, **params)
 
+		# Do additional filtering based on user options
 		if user is not None:
 			user = __import__(user)	
 			html_section = user.pandocket(html_section)
-
 		if (sysargs.noimages):
 			for image in html_section.find_all(name='img'):
 				image.decompose()
 
+		# Convert from HTML to markdown	
 		doc = pandoc.Document()
 		doc.html = str(html_section)
 		html_md = doc.markdown
@@ -67,7 +68,7 @@ for line in input:
 		# Pass regular lines from input file to output file
 		f = open(sysargs.outname + ".md","a").write(line + "\n")
 
-# Call on pandoc to convert markdown to PDF and EPUB
+# Call on pandoc to convert markdown to PDF and EPUB, adding user options
 # Using yoavram fork of pyandoc
 
 if not (sysargs.mdonly):
@@ -75,8 +76,6 @@ if not (sysargs.mdonly):
 	for panarg in panargs:
 		panarg = panarg.lstrip('-')
 		fulldoc.add_argument(panarg)	
-	# fulldoc.add_argument("standalone")
-	# fulldoc.add_argument("toc")
 	fulldoc.markdown = open(sysargs.outname + ".md","r").read()
 	fulldoc.to_file(sysargs.outname + '.pdf')
 	fulldoc.to_file(sysargs.outname + '.epub')
