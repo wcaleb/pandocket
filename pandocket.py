@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 parser = argparse.ArgumentParser()
 parser.add_argument('filename', action='store', help='Name of input file to process')
 parser.add_argument('outname', action='store', help='Basename for output files')
-
+parser.add_argument('--mdonly', action='store_true', help='Output markdown only, suppress EPUB and PDF output')
 sysargs = parser.parse_args()
 
 # Open the input file and empty the output file
@@ -56,9 +56,10 @@ for line in input:
 # Call on pandoc to convert fulltext to markdown and write to file
 # Using yoavram fork of pyandoc
 
-fulldoc = pandoc.Document()
-fulldoc.add_argument("standalone")
-fulldoc.add_argument("toc")
-fulldoc.markdown = open(sysargs.outname + ".md","r").read()
-fulldoc.to_file('pandocket-output.pdf')
-fulldoc.to_file('pandocket-output.epub')
+if not (sysargs.mdonly):
+	fulldoc = pandoc.Document()
+	fulldoc.add_argument("standalone")
+	fulldoc.add_argument("toc")
+	fulldoc.markdown = open(sysargs.outname + ".md","r").read()
+	fulldoc.to_file(sysargs.outname + '.pdf')
+	fulldoc.to_file(sysargs.outname + '.epub')
