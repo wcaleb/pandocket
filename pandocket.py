@@ -15,7 +15,7 @@ parser.add_argument('filename', action='store', help='Name of input file to proc
 parser.add_argument('outname', action='store', help='Basename for output files')
 parser.add_argument('--mdonly', action='store_true', help='Output markdown only, suppress EPUB and PDF output')
 parser.add_argument('--noimages', action='store_true', help='Remove image tags from webpage (recommended for PDF and EPUB output)')
-sysargs = parser.parse_args()
+sysargs, panargs = parser.parse_known_args()
 
 # Open the input file and empty the output file
 input = open(sysargs.filename, "r").read().splitlines()
@@ -72,8 +72,11 @@ for line in input:
 
 if not (sysargs.mdonly):
 	fulldoc = pandoc.Document()
-	fulldoc.add_argument("standalone")
-	fulldoc.add_argument("toc")
+	for panarg in panargs:
+		panarg = panarg.lstrip('-')
+		fulldoc.add_argument(panarg)	
+	# fulldoc.add_argument("standalone")
+	# fulldoc.add_argument("toc")
 	fulldoc.markdown = open(sysargs.outname + ".md","r").read()
 	fulldoc.to_file(sysargs.outname + '.pdf')
 	fulldoc.to_file(sysargs.outname + '.epub')
