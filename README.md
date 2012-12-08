@@ -41,7 +41,7 @@ The `--noimages` option will strip all `<img>` tags from the HTML content. This 
 
 ## Any pandoc options
 
-You can supply (almost) any of pandoc's regular options at the command line so long as you use the longer "two-dash" form of the option. (E.g., `--standalone` instead of `-s`.) See known issues for problems.
+If you are using the yoavram fork of pyandoc (see below for dependencies), you can supply (almost) any of pandoc's regular options at the command line so long as you use the longer "two-dash" form of the option. (E.g., `--standalone` instead of `-s`.) See known issues for problems.
 
 ## Additional user-defined filtering
 
