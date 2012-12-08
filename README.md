@@ -41,7 +41,7 @@ The `--noimages` option will strip all `<img>` tags from the HTML content. This 
 
 ## Any pandoc options
 
-You can supply any of pandoc's regular options at the command line so long as you use the longer "two-dash" form of the option. (E.g., `--standalone` instead of `-s`.)
+You can supply (almost) any of pandoc's regular options at the command line so long as you use the longer "two-dash" form of the option. (E.g., `--standalone` instead of `-s`.) See known issues for problems.
 
 ## Additional user-defined filtering
 
@@ -63,6 +63,7 @@ The only important thing here, from pandocket's perspective, is that the functio
 # Known Issues
 
 - If the HTML content grabbed from the web uses "span" tags to provide formatting like italics, pandoc will lose the formatting. Basically, if the HTML is not well-formed, you're on your own.
+- You can't enter pandoc options that include strings with quotes, like `--variable=header-includes:'\setromanfont{TeX Gyre Pagella}'`
 
 # Dependencies
 
