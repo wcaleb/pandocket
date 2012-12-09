@@ -17,7 +17,7 @@ After "expanding" these trigger lines with the content from the specified URLs, 
 
 The markdown file is produced so that the user can clean up any problems in the content grabbed from the web. The outputted markdown file, once manually cleaned, can either be processed at the command line using pandoc or passed back through pandocket as the new input file.
 
-An example input file called `sources.txt` is included in this repository, together with its markdown output file `pandocket-output.md`.
+An example input file called `sources.txt` is included in this repository, together with its markdown output file `pandocket-output.md`. In a real-world scenario, the user might want to delete a few lines from this output file before converting into PDF, but even the PDF produced from this output file is very readable.
 
 To run the program, give the source file first and then the desired basename for output files, followed by any options.
 
@@ -59,6 +59,8 @@ Then I could include a trigger line like this in my source file:
 	http://modeforcaleb.blogspot.com/2004/12/lives-of-douglass-part-i.html | div > class=blogPost | modeforcaleb
 
 The only important thing here, from pandocket's perspective, is that the function be called `pandocket`.
+
+An example module of this kind is included in this repository as `avalon.py`, and is used in the example `sources.txt` file also included here.
 
 # Known Issues
 
