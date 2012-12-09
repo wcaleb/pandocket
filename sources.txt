@@ -1,6 +1,6 @@
-% Some Slavery Milestones in U.S. History
-% W. Caleb McDaniel 
-% December 8, 2012
+% Some Slavery Milestones in U.S. History  
+% W. Caleb McDaniel   
+% December 8, 2012  
 
 This packet contains the text of some important legislative documents pertaining to slavery and antislavery in U.S. history. The source of the text is provided after each excerpt.
 
