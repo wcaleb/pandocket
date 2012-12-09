@@ -1,18 +1,57 @@
-% Testing Pandocket
+% Some Slavery Milestones in U.S. History
 % W. Caleb McDaniel 
-% November 23, 2012
+% December 8, 2012
 
-# Preface
+This packet contains the text of some important legislative documents pertaining to slavery and antislavery in U.S. history. The source of the text is provided after each excerpt.
 
-I'm using this file to test out my new Python script. Since this is just a regular markdown file, I can include any markdown content just as I normally would.
+# Pennsylvania Emancipation Law of 1780
 
-# Lincoln Overturns Hunter's Proclamation
+> During and after the American Revolution, Northern states began passing gradual emancipation laws. One of the first such laws was passed by Pennsylvania in 1780.
 
-The below text is taken from <http://www.history.umd.edu/Freedmen/hunter.htm>.
+http://avalon.law.yale.edu/18th_century/pennst01.asp | div > class_=text-properties | avalon
 
-http://www.history.umd.edu/Freedmen/hunter.htm | div > id=doctext
+*Source*: <http://avalon.law.yale.edu/18th_century/pennst01.asp>
 
-# Lincoln's Preliminary Emancipation Proclamation
+## Questions
+
+1. How many slaves living in Pennsylvania in 1780 were freed as a result of this law?
+
+2. Under what conditions was emancipation promised to enslaved people in Pennsylvania?
+
+---
+
+# Northwest Ordinance of 1787
+
+> This ordinance, passed by the Second Continental Congress, prohibited slavery and involuntary servitude in the Northwest Territory, which later became the states of Ohio, Indiana, Illinois, Michigan, and Wisconsin. 
+
+http://www.ourdocuments.gov/doc.php?flash=true&doc=8&page=transcript | div > id=infoText
+
+*Source*: <http://www.ourdocuments.gov/doc.php?doc=8&page=transcript>
+
+## Questions
+
+1. Why does the Ordinance distinguish between "slavery" and "involuntary servitude"?
+
+2. What do you think the effect of the "fugitive" clause of the Ordinance would be on the status of slavery in the territories?
+
+---
+
+# Wilmot Proviso of 1846
+
+> This proposed amendment to an appropriations bill for the Mexican American War galvanized antislavery politicians in the Free Soil Party formed two years later.
+
+http://www.mtholyoke.edu/acad/intrel/wilmot.htm | body
+
+*Source*: <https://www.mtholyoke.edu/acad/intrel/wilmot.htm>
+
+## Questions
+
+1. Did the text of the Proviso resemble any earlier documents we have studied?
+
+2. Which territories would be covered by the Proviso if it had been passed?
+
+---
 
 http://www.history.umd.edu/Freedmen/prelep.htm | div > id=doctext
 
+*Source:* <http://www.history.umd.edu/Freedmen/prelep.htm>
