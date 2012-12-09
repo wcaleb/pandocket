@@ -37,18 +37,22 @@ for line in input:
 		tag = args[0]
 		params = dict([param.strip().split('=') for param in args[1:]])
 
-		# Open specified URL and use BeautifulSoup to get specified section
+		# Open specified URL and make soup 
 		html = urllib2.urlopen(url).read()
 	 	soup = BeautifulSoup(html)
+
+		# Filter out images if noimages option selected
+		if (sysargs.noimages):
+			for image in soup.find_all(name='img'):
+				image.decompose()
+
+		# Use BeautifulSoup to get specified section
  		html_section = soup.find(tag, **params)
 
 		# Do additional filtering based on user options
 		if user is not None:
 			user = __import__(user)	
 			html_section = user.pandocket(html_section)
-		if (sysargs.noimages):
-			for image in html_section.find_all(name='img'):
-				image.decompose()
 
 		# Convert from HTML to markdown	
 		doc = pandoc.Document()
